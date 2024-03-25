@@ -15,50 +15,44 @@ int main() {
 #pragma region консольный параметр
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
-
-	// принимает только кириллицу
-	//system("chcp 1251");
-
-	// при выводе из массива не воспринимает кириллицу
-	//setlocale(LC_ALL, "RUSSIAN");
 #pragma endregion
 
 	while (hill != "y" && hill != "Y") {
 		Accounts acc;
-		cout << "Добро пожаловать в программу:" << endl;
-		
+		cout << "Welcome for a console chat:" << endl;
+
 		while (true) {
 			if (acc.getIdUsers() != 0) {
-				cout << "Пользователей в системе: " << acc.getIdUsers() << endl;
-				cout << "1 - Добавление пользователя, 2 - Вход в программу, 0 - для выхода." << endl;
+				cout << "Users on system: " << acc.getIdUsers() << endl;
+				cout << "1 - Add user, 2 - Enter program, 0 - exit." << endl;
 				cin >> set;
 				if (set == 1) {
 					// додумать функционал, сколько пользователей собираешься добавить
 					acc.addData(acc.getIdUsers());
-					cout << "Пользователь добавлен!" << endl;
+					cout << "User add!" << endl;
 				}
-				else if (set == 2){
-					cout << "Введите id пользователя: ";
+				else if (set == 2) {
+					cout << "Enter id user: ";
 					cin >> _idUser;
 					_idUser--;
-					cout << "Введите Login: ";
+					cout << "Enter Login: ";
 					cin >> _login;
-					cout << "Введите Password: ";
+					cout << "Enter Password: ";
 					cin >> _pass;
 					acc.loginProg(_idUser, _login, _pass);
 				}
-				else
+				else if (set == 0)
 					break;
 			}
 			else {
-				cout << "Пользователей нет в программе!" << endl;
-				cout << "Регистрация пользователя: " << endl;
+				cout << "Upload users fail!" << endl;
+				cout << "Registred user: " << endl;
 				acc.setData(_idUser);
-				cout << "Пользователь добавлен!" << endl;
+				cout << "Added user!" << endl;
 			}
 		}
 
-		cout << "Выйти из программы? y/n :";
+		cout << "Confirm Exit! y/n :";
 		cin >> hill;
 		cout << hill << endl;
 	}
